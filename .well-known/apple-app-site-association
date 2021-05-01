@@ -1,15 +1,1 @@
-{
-    "applinks":{
-        "details":[
-            {
-                "paths":[
-                    "/cheepin_dir/*"
-                ],
-                "appID":"NQH5KFVNVF.com.cheepin.demo"
-            }
-        ],
-        "apps":[
-
-        ]
-    }
-}
+{"applinks":{"details":[{"paths":["/cheepin_dir/*"],"appID":"NQH5KFVNVF.com.cheepin.demo"}],"apps":[]},"webcredentials":{"apps":["NQH5KFVNVF.com.cheepin.demo"]}}
