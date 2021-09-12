@@ -1,101 +1,67 @@
-<div class="content content-archive">
-  <%- partial('_partial/component/page-header', {location: __('location.blog')}) %>
-
-  <div class="post-list-box archive-body">
-    <%- getPostListsDom(page.posts) %>
-  </div>
-
-  <div class="archive-footer">
-    <%- partial('_partial/component/pagination') %>
-  </div>
-</div>
-
-<%- partial('_partial/component/back-top', {showBacktop: theme.backtop.archive}) %>
-
 <%
-
-//======================================================
-// Helper function
-//======================================================
-
-/**
- * transform page.posts to an array
- * @param  {Object} posts page.posts
- * @return {Arrary} posts arrary
- */
-function postsToArray(pagePosts) {
-  var postsArr = []
-  pagePosts.each(function (post) {
-    postsArr.push(post);
-  });
-  return postsArr;
+var title = '';
+var icon = '';
+if(page.category) {
+    title = page.category;
+    icon = 'category';
 }
-
-/**
- * get getUniqueYears from page.post
- * @param  {Object} posts it's page.post
- * @return {Arrary}  years  something like ['2016', '2015', '2014']
- */
-function getUniqueYears(posts) {
-  var years = [];
-
-  posts.forEach(function (post) {
-    var year = post.date.year();
-    if (years.indexOf(year) < 0) {
-      years.push(year);
-    }
-  });
-
-  return years;
-};
-
-/**
- * get one year's post
- * @param  {Arrary} postsArr
- * @param  {String} year eg: '2014'
- * @return {Arrary} postsArr after filter
- */
- function filterPostByYear(postsArr, year) {
-  return postsArr.filter(function (post) {
-    return year === post.date.year();
-  });
-};
-
-/**
- * handlePosts to insert year
- * @param  {Arrary} postsArr
- * @return {Arrary}
- */
-function handlePosts(postsArr) {
-  var postLists = [];
-  var years = getUniqueYears(postsArr);
-
-  years.forEach(function(year) {
-    postLists.push({year: year, isYear: true});
-    var thisYearPosts = filterPostByYear(postsArr, year);
-    postLists = postLists.concat(thisYearPosts);
-  });
-
-  return postLists;
-};
-
-/**
-* getPostListsDom
-* @param  {Object} pagePosts
-* @return {String} dom string
-*/
-function getPostListsDom(posts) {
-  var dom = '<ul class="list-post">';
-
-  var postsArr = postsToArray(posts);
-  posts = handlePosts(postsArr);
-
-  posts.forEach(function (post) {
-    var patialPath = post.isYear ? '_partial/component/item-year' : '_partial/component/item-post';
-    dom += partial(patialPath, {post: post});
-  });
-
-  dom += '</ul>';
-  return dom;
+if(page.tag) {
+    title = page.tag;
+    icon = 'tag';
+}
+if(page.archive) {
+    icon = 'archive';
+    if(page.year) title = page.year + (page.month ? '/' + page.month : '');
+    else title = "归档";
 }
 %>
+
+<div class="container archive-body">
+    <div class="row">
+        <div class="col-xs-2 well">
+            <h2 class="<%= icon %>-icon"><%= title %></h2>
+            <%- list_archives() %>
+        </div>
+        
+        <div class="col-xs-10">
+            <% page.posts.each(function(item) { %>
+            <article class="post">
+                <div class="jumbotron">
+                    <h1><a href="<%- config.root %><%- item.path %>" title="<%- item.title %>"><%- item.title %></a></h1>
+
+                    <% if(item.description){ %>
+                        <p><%- item.description %></p>
+                    <% } else if(item.excerpt){ %>
+                        <p><%= strip_html(item.excerpt).replace(/^\s*/, '').replace(/\s*$/, '').substring(0, 140) %></p>
+                    <% } else {%>
+                        <p><%= strip_html(item.content).replace(/^\s*/, '').replace(/\s*$/, '').substring(0, 140) %></p>
+                    <% } %>
+
+                    <p class="say-title">
+                        —— <img src="<%- theme.avatar %>" class="img-circle index-post-avatar" />
+                        <a href="<%- config.url %>" target="_blank" title="<%- config.author %>"><%- config.author %></a>
+                        于<%- item.date.format(config.date_format) %>自豪地<% if(item.tags && item.tags.length){ %>以 <%- list_tags(item.tags, { show_count: false, class: 'article-tag', style: ""}) %> <% } %>唠嗑
+                    </p>
+                </div>
+            </article>
+            <% }); %>
+            
+            <% if (page.total > 1){ %>
+            <div class="pagination-div">
+                <div class="well">
+                <%- paginator({
+                  prev_text: '&laquo; Prev',
+                  next_text: 'Next &raquo;'
+                }) %>
+                </div>
+            </div>
+            <% } %>
+        </div>
+    </div>
+</div>
+
+<script>
+$(function() {
+    $(".archive-list-count").addClass("badge");
+});
+</script>
