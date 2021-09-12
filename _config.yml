@@ -1,2 +1,2 @@
 theme: jekyll-theme-cayman
-include: [".well-known","iOS相关/开发相关","source/*"]
+include: [".well-known","iOS相关/开发相关","video"]
