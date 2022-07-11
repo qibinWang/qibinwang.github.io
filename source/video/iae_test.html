@@ -1,18 +1,89 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title></title>
+        <style type="text/css">
+            body{
+                padding-top: 30px;
+            }
+            .open-app {
+                margin: 30px;
+                border-radius: 5px;
+                padding: 10px 20px;
+                border: 1px solid #ccc;
+            }
+        </style>
+        <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    </head>
+    <body>
+        
+        <a class="open-app">click me to app</a>
+        
+        <script type="text/javascript">
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-</head>
 
-<body>
-    <script>
-        window.location = "https://qibinwang.github.io/cheepin_dir/123";
+           
 
-        setTimeout(function() {
-            window.location = "http://weixin.qq.com/cgi-bin/readtemplate?check=false&t=weixin_getdownurl_sms&s=download&from=100&stype=10037102";
-        }, 1500);
-    </script>
-</body>
 
+            $('a').click(function() {
+
+
+
+
+                //iframe
+                function iframeBridge(url) {
+                    let ifr = document.createElement("iframe");
+                    ifr.src = url;
+                    ifr.style.display = "none";
+                    document.body.appendChild(ifr);
+                    setTimeout(function () {
+                        document.body.removeChild(ifr);
+                    }, 1000);
+                };
+
+                iframeBridge("https://qibinwang.github.io/cheepin_dir/123");
+
+                // var u = navigator.userAgent;
+                // var isWeixin = u.toLowerCase().indexOf('micromessenger') !== -1; // 微信内
+                // var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端
+                // var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+
+                // // 微信内
+                // if(isWeixin) {
+                //     alert('请在浏览器上打开')
+                // } else {
+                //     //android端
+                //     if (isAndroid) {
+                //         //安卓app的scheme协议
+                //         window.location.href = 'taobao://';
+                //         setTimeout(function(){
+                //             let hidden = window.document.hidden || window.document.mozHidden || window.document.msHidden ||window.document.webkitHidden 
+                //             if(typeof hidden =="undefined" || hidden ==false){
+                //                 //应用宝下载地址 (emmm 找不到淘宝应用宝的地址，这里放的是 lucky coffee 地址)
+                //                 window.location.href ="https://a.app.qq.com/o/simple.jsp?pkgname=com.lucky.luckyclient";
+                //             }
+                //         }, 2000);
+                //     }
+                //     //ios端
+                //     if (isIOS) {
+                //         //ios的scheme协议
+                //         window.location.href = 'taobao://'
+                //         setTimeout(function(){
+                //             let hidden = window.document.hidden || window.document.mozHidden || window.document.msHidden ||window.document.webkitHidden 
+                //             if(typeof hidden =="undefined" || hidden ==false){
+                //                 //App store下载地址
+                //                 window.location.href = "http://itunes.apple.com/app/id387682726";
+                //             }
+                //         }, 2000);
+                //     }
+                // }
+                
+            });
+        </script>
+    </body>
 </html>
+————————————————
+版权声明：本文为CSDN博主「web_blog」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/qq_43248623/article/details/115397758
