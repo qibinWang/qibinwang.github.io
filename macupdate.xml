@@ -1,18 +1,14 @@
-<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+<rss
+    xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
     <channel>
-        <title>JustFocus</title>
+        <title>MyMacApp</title>
         <item>
-            <title>2.0.0</title>
-            <pubDate>Mon, 15 Mar 2021 00:28:29 +0800</pubDate>
-            <sparkle:minimumSystemVersion>10.13</sparkle:minimumSystemVersion>
-            <enclosure url="https://your/update/file.zip" sparkle:version="601" sparkle:shortVersionString="2.0.0" length="15981682" type="application/octet-stream" sparkle:edSignature="<you-ed-signature>"/>
-            <description>
-                <h2>2.0.0 (Beta 1)</h2>
-                <p>Build 599, 14 March 2021</p>
-                <ul>
-                    <li>New: Custom quotes supported.</li>
-                </ul>
-            </description>
+            <title>2.0</title>
+            <pubDate>Thu, 17 Aug 2023 14:13:12 +0800</pubDate>
+            <sparkle:version>2.0</sparkle:version>
+            <sparkle:shortVersionString>2.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+            <enclosure url="http://192.168.8.148/temp/MyMacApp.zip" length="749981" type="application/octet-stream" sparkle:edSignature="/L42BdLPWzum12cBOfYgefLb444DHI2m9Lgxw6sE0nYXwvTBvAwUSz4m74grq/adbI5OdXqNh2GDEfG58uvfAw=="/>
         </item>
     </channel>
 </rss>
