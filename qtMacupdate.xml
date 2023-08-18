@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>QTDemoSparkle</title>
+        <item>
+            <title>2.0</title>
+            <pubDate>Fri, 18 Aug 2023 22:04:45 +0800</pubDate>
+            <sparkle:version>2.0</sparkle:version>
+            <sparkle:shortVersionString>2.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>10.13</sparkle:minimumSystemVersion>
+            <enclosure url="https://qibinwang.github.io/qtMac.zip" length="2738189" type="application/octet-stream" sparkle:edSignature="b4uF22k/l3AYDCXPXFjZ6yCNPncIqlIo8g2V2oDl5g1Pvj1Dk+bgS922Xbhm2ZZQ6wcq75dzJrHZtoDVC6bTDw=="/>
+        </item>
+    </channel>
+</rss>
